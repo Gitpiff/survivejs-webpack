@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksurvivejs=self.webpackChunksurvivejs||[]).push([[480],{480:(s,e,u)=>{u.r(e),u.d(e,{default:()=>l});const l="Hello from lazy"}}]);

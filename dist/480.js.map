@@ -1,0 +1,1 @@
+{"version":3,"file":"480.js","mappings":"kIAAA,yB","sources":["webpack://survivejs/./src/lazy.js"],"sourcesContent":["export default \"Hello from lazy\";\n"],"names":[],"sourceRoot":""}
