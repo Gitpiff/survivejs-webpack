@@ -1,1 +1,1 @@
-(()=>{"use strict";document.body.appendChild(((e="Hello from component inside src")=>{const o=document.createElement("div");return o.innerHTML=e,o})()),console.log("Hello World")})();
+(()=>{"use strict";document.body.appendChild(((e="Hello from component inside src")=>{const o=document.createElement("div");return o.className="rounded bg-red-100 border max-w-md m-4 p-4",o.innerHTML=e,o})()),console.log("Hello World")})();

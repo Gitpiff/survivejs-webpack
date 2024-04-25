@@ -43,3 +43,11 @@ exports.extractCSS = ({ options = {}, loaders = [] } = {}) => {
         ],
     }
 };
+
+// Loads Tailwind
+exports.tailwind = () => ({
+    loader: "postcss-loader",
+    options: {
+        postcssOptions: { plugins: [require("tailwindcss")()] },
+    },
+});
