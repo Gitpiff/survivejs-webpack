@@ -27,4 +27,34 @@ const getConfig = (mode) => {
     }
 };
 
+// const config = {
+//     module: {
+//         rules: [
+//             {
+//                 // Conditions to match -js file here
+//                 test: /\.js$/,
+//                 // Restrict matching to a directory
+//                 include: Path.join(__dirname, "app"),
+//                 exclude: (path) => path.match(/node_modules/),
+//                 // Actions to apply loaders to the matched files
+//                 use: "babel-loader"
+//             },
+//         ],
+//     },
+// };
+
+// const config = {
+//     rules: [
+//         {
+//             test: /\.js$/,
+//             use: [
+//                 (info) => ({
+//                     loader: "babel-loader",
+//                     options: { presets: ["env"] }
+//                 })
+//             ]
+//         },
+//     ],
+// }
+
 module.exports = getConfig(mode);
