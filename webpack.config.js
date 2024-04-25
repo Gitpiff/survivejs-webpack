@@ -1,5 +1,6 @@
 const { mode } = require("webpack-nano/argv")
 const { merge } = require("webpack-merge");
+const path = require('path');
 const parts = require("./webpack.parts");
 const cssLoaders = [parts.autoprefix(), parts.tailwind()];
 
@@ -9,9 +10,25 @@ const commonConfig = merge([
     parts.extractCSS({ loaders: cssLoaders }),
     parts.loadImages({ limit: 15000 }),
     parts.generateSourceMaps({ type: "hidden-source-map" }),
+    parts.clean(),
 ]);
 
-const productionConfig = merge([parts.eliminateUnusedCSS()]);
+const productionConfig = merge([
+    parts.eliminateUnusedCSS(),
+    {
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendor",
+                        chunks: "initial"
+                    },
+                },
+            },
+        },
+    },
+]);
 
 const developmentConfig = merge([
     { entry: ["./src/index.js"]},
@@ -29,21 +46,21 @@ const getConfig = (mode) => {
     }
 };
 
-// const config = {
-//     module: {
-//         rules: [
-//             {
-//                 // Conditions to match -js file here
-//                 test: /\.js$/,
-//                 // Restrict matching to a directory
-//                 include: Path.join(__dirname, "app"),
-//                 exclude: (path) => path.match(/node_modules/),
-//                 // Actions to apply loaders to the matched files
-//                 use: "babel-loader"
-//             },
-//         ],
-//     },
-// };
+const config = {
+    module: {
+        rules: [
+            {
+                // Conditions to match -js file here
+                test: /\.js$/,
+                // Restrict matching to a directory
+                include: path.join(__dirname, "app"),
+                exclude: (path) => path.match(/node_modules/),
+                // Actions to apply loaders to the matched files
+                use: "babel-loader"
+            },
+        ],
+    },
+};
 
 // const config = {
 //     rules: [
@@ -58,5 +75,7 @@ const getConfig = (mode) => {
 //         },
 //     ],
 // }
+
+// Bundle splitting
 
 module.exports = getConfig(mode);

@@ -94,3 +94,10 @@ exports.loadImages = ({ limit } = {}) => ({
 
 // Source Maps
 exports.generateSourceMaps = ({ type }) => ({ devtool: type });
+
+// Clean the build directory
+exports.clean = () => ({
+    output: {
+        clean: true,
+    },
+});
