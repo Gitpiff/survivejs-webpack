@@ -3,7 +3,7 @@ const { MiniHtmlWebpackPlugin } = require("mini-html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const glob = require("glob");
-const { purgeCSSPlugin, PurgeCSSPlugin } = require("purgecss-webpack-plugin");
+const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 
 const ALL_FILES = glob.sync(path.join(__dirname, "src/*.js"));
 
@@ -68,4 +68,12 @@ exports.eliminateUnusedCSS = () => ({
             ],
         }),
     ],
+});
+
+// Sets autoprefixing -order matters, place after tailwind is done loading-
+exports.autoprefix = () => ({
+    loader: "postcss-loader",
+    options: {
+        postcssOptions: { plugins: [require("autoprefixer")()] },
+    },
 });
