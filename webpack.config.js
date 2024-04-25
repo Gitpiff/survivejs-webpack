@@ -7,6 +7,8 @@ const commonConfig = merge([
     { entry: ['./src'] },
     parts.page({ title: "Demo" }),
     parts.extractCSS({ loaders: cssLoaders }),
+    parts.loadImages({ limit: 15000 }),
+    parts.generateSourceMaps({ type: "hidden-source-map" }),
 ]);
 
 const productionConfig = merge([parts.eliminateUnusedCSS()]);

@@ -317,5 +317,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 body {
     background: cornsilk;
+
+    background-image: url(8abdffa7a76fc3b75052.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
+
+/*# sourceMappingURL=main.css.map */

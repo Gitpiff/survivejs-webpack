@@ -77,3 +77,20 @@ exports.autoprefix = () => ({
         postcssOptions: { plugins: [require("autoprefixer")()] },
     },
 });
+
+
+// Handles images
+exports.loadImages = ({ limit } = {}) => ({
+    module: {
+        rules: [
+            {
+                test: /\.(png|jpg)$/,
+                type: "asset",
+                parser: { dataUrlCondition: { maxSize: limit} },
+            },
+        ],
+    },
+});
+
+// Source Maps
+exports.generateSourceMaps = ({ type }) => ({ devtool: type });
